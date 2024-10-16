@@ -1,36 +1,34 @@
-/*Zadatak 3: Unos brojeva dok ne postignemo određeni zbroj
-Napiši program koji traži unos brojeva od korisnika sve dok zbroj
-svih unesenih brojeva ne dostigne ili prijeđe unaprijed definirani ciljni zbroj.
-Ako korisnik unese negativan broj, program ga ignorira i traži novi unos.
-Ako korisnik unese 0, prekida unos i program ispisuje trenutni zbroj.
-Kada se zbroj dostigne ili premaši, program završava i ispisuje
-koliko je pokušaja korisnik napravio i konačni zbroj.*/
+/*Traziti unos velicine polja u koje korisnik kasnije unosi
+vrijednosti pojedinog elementa polja. Potrebno je ispisati
+maximalnu vrijednost elementa polja.
+Npr, 3 je velicina polja te je korisnik unjeo 1,3,5. Program
+treba pronaci najvecu vrijednost te u obom slucaju ispisati 5.*/
+
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
-        int maxBroj = 20;
-        int uneseniBroj = 1;
-        int zbroj = 0;
-        int brojac = 0;
-        while(zbroj < maxBroj){
-            System.out.println("Unesite pozitivan broj: ");
-            uneseniBroj = sc.nextInt();
-            if (uneseniBroj>0){
-                zbroj = zbroj+uneseniBroj ;
-                brojac = brojac + 1;
-            }
-            else if (uneseniBroj<0){
-                System.out.println("Ne možete unijeti negativan broj.");
-            }
-            else {
-                System.out.println("Unijeli ste nulu. Program se prekida.");
-                break;
+        int velicinaPolja = 0;
+
+        System.out.println("Unesite velicinu polja: ");
+        velicinaPolja = sc.nextInt();
+        int polje[] = new int[velicinaPolja];
+
+        for (int i=0; i<velicinaPolja; i++){
+            System.out.println("Unesite vrijednosti za " + (i+1) + ". polje: ");
+            polje[i] = sc.nextInt();
+        }
+
+        int maxBroj = polje[0];
+
+        for (int i=0; i<velicinaPolja; i++){
+            if (polje[i]>= maxBroj){
+                maxBroj = polje[i];
             }
         }
-        System.out.println("Zbroj unsesenih brojeva iznosi: " + zbroj);
-        System.out.println("Broj uspješnih pokušaja: " + brojac);
+        System.out.println("Najveca vrijednost je: " + maxBroj);
     }
 }
